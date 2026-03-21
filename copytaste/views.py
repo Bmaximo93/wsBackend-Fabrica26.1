@@ -19,7 +19,7 @@ def register_view(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/login/') # TODO: criar /login/
+            return redirect('/login/')
     else:
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
@@ -41,7 +41,7 @@ def logout_view(request):
 
 @login_required
 def recipe_list_view(request):
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'recipe_list.html', {'recipes': recipes})
 
 @login_required
@@ -76,7 +76,7 @@ def add_recipe_view(request):
 @login_required
 def recipe_detail_view(request, pk):
     try:
-        recipe = Recipe.objects.get(pk=pk)
+        recipe = Recipe.objects.get(pk=pk, user=request.user)
     except Recipe.DoesNotExist:
         raise Http404
     return render(request, 'recipe_detail.html', {'recipe': recipe})
@@ -84,7 +84,7 @@ def recipe_detail_view(request, pk):
 @login_required
 def delete_recipe_view(request, pk):
     try:
-        recipe = Recipe.objects.get(pk=pk)
+        recipe = Recipe.objects.get(pk=pk, user=request.user)
     except Recipe.DoesNotExist:
         return redirect('/recipes/')
 
@@ -93,7 +93,7 @@ def delete_recipe_view(request, pk):
 
 @login_required
 def edit_recipe_view(request, pk):
-    recipe = Recipe.objects.get(pk=pk)
+    recipe = Recipe.objects.get(pk=pk, user=request.user)
 
     if request.method == 'POST':
         form = EditRecipeForm(request.POST, instance=recipe)
