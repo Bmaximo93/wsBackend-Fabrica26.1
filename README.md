@@ -4,7 +4,7 @@ Aplicação web para extrair e salvar receitas de vídeos do YouTube utilizando 
 
 ## Sobre
 
-Sabe quando você salva um vídeo de receita no YouTube ou no Shorts para fazer depois, mas acaba esquecendo? E quando finalmente vai cozinhar, precisa ficar pausando e reassistindo o vídeo a cada passo?
+Sabe quando você salva um vídeo de receita no YouTube ou no Shorts para fazer depois, mas voce nunca faz porque acaba esquecendo? E quando finalmente vai cozinhar, precisa ficar pausando e reassistindo o vídeo a cada passo?
 
 O CopyTaste é uma aplicação web que resolve esse problema. O usuário cria uma conta, cola o link de um vídeo de culinária do YouTube e a aplicação envia o vídeo para a API do Google Gemini, que analisa o conteúdo e extrai automaticamente uma receita estruturada: título, descrição, lista de ingredientes com quantidades, modo de preparo passo a passo e tempo estimado de preparo. Toda a resposta é validada através de um schema Pydantic com structured output, garantindo consistência nos dados antes mesmo de salvar no banco.
 
