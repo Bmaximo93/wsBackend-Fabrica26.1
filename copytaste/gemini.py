@@ -28,8 +28,6 @@ class RecipeSchema(BaseModel):
     title: str
     description: str
     summary: str
-    ingredients: str
-    steps: str
     ingredients: list[str]
     steps: list[str]
     duration_minutes: int | None
