@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from copytaste.views import recipe_list_view, register_view
+from copytaste import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('recipes/', recipe_list_view),
-    path('register/', register_view),
+    path('recipes/', views.recipe_list_view, name='recipe_list'),
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 ]
