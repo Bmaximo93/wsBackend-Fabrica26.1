@@ -56,6 +56,10 @@ def extract_recipe_from_video(url: str):
 
     return recipe
 
+# TODO: tentar implementar estimativa de tempo de processamento para feedback
+#  def get_video_duration(url: str):
+
+
 def test_gemini():
 
     inicio = time.time()
