@@ -80,3 +80,14 @@ def recipe_detail_view(request, pk):
     except Recipe.DoesNotExist:
         raise Http404
     return render(request, 'recipe_detail.html', {'recipe': recipe})
+
+@login_required
+def delete_recipe_view(request, pk):
+    try:
+        recipe = Recipe.objects.get(pk=pk)
+    except Recipe.DoesNotExist:
+        return redirect('/recipes/')
+
+    recipe.delete()
+    return redirect('/recipes/')
+

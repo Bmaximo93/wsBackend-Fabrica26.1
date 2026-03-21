@@ -38,8 +38,10 @@
         <div class="d-flex gap-2 mt-4">
             <!-- TODO: implementar editar receita -->
             <a href="#" class="btn btn-outline-primary">Editar</a>
-            <!-- TODO: implementar apagar receita -->
-            <button class="btn btn-outline-danger" >Apagar</button>
+            <form method="post" action="{% url 'delete_recipe' recipe.pk %}" onsubmit="return confirm('Tem certeza que deseja apagar esta receita?')">
+                {% csrf_token %}
+                <button class="btn btn-outline-danger" type="submit">Apagar</button>
+            </form>
         </div>
     </div>
 </div>
