@@ -5,13 +5,8 @@
     <div class="col-md-8">
         <h2 class="mb-4">Adicionar Receita</h2>
 
-        {% if form.non_field_errors %}
-            <div class="alert alert-danger">
-                {% for error in form.non_field_errors %}
-                    <p>{{ error }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
+        {% include "partials/alert.html" %}
+
 
         <form method="post">
             {% csrf_token %}
