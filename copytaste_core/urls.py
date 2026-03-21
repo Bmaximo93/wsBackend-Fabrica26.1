@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from copytaste.views import recipe_list_view
+from copytaste.views import recipe_list_view, register_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('recipes/', recipe_list_view),
+    path('register/', register_view),
 ]
