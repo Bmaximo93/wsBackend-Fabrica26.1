@@ -23,6 +23,14 @@ class EditRecipeForm(forms.ModelForm):
         model = Recipe
         fields = ['title', 'description', 'summary', 'duration_minutes', 'ingredients', 'steps']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance and self.instance.pk:
+            if isinstance(self.instance.ingredients, list):
+                self.initial['ingredients'] = '\n'.join(self.instance.ingredients)
+            if isinstance(self.instance.steps, list):
+                self.initial['steps'] = '\n'.join(self.instance.steps)
+
     def clean_ingredients(self):
         text = self.cleaned_data['ingredients']
         return [line.strip() for line in text.splitlines() if line.strip()]

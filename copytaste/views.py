@@ -102,8 +102,6 @@ def edit_recipe_view(request, pk):
             return redirect('recipe_detail', pk=recipe.pk)
     else:
         form = EditRecipeForm(instance=recipe)
-        form.fields['ingredients'].initial = '\n'.join(recipe.ingredients or [])
-        form.fields['steps'].initial = '\n'.join(recipe.steps or [])
 
     return render(request, 'edit_recipe.html', {'form': form, 'recipe': recipe})
 
