@@ -11,7 +11,8 @@ MODEL = "gemini-2.5-flash"
 PROMPT = (
     "Watch the provided video and extract the recipe if one exists. "
     "If the ingredients and steps are not explicitly provided or if the video has no narration, try to carefully infer ingredients and steps from the visual content. "
-    "Return all text fields (title, description, ingredients, steps) in Brazilian portuguese. "
+    "Summary must be no longer than 20 words, suitable for a preview card. "
+    "Return all text fields (title, description, summary, ingredients, steps) in Brazilian portuguese. "
     "try to infer duration if no duration is provided in the video, if duration cannot be reasonably inferred, set duration_minutes to none "
     "Set is_recipe to false and leave all other fields as empty strings or empty lists if the video does not contain a recipe. "
     "Do not invent or fabricate ingredients or steps that are not present in the video. "
@@ -26,6 +27,9 @@ class RecipeSchema(BaseModel):
     is_recipe: bool
     title: str
     description: str
+    summary: str
+    ingredients: str
+    steps: str
     ingredients: list[str]
     steps: list[str]
     duration_minutes: int | None

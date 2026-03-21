@@ -1,5 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Teste</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Minhas Receitas</h2>
+    <a href="{% url 'add_recipe' %}" class="btn btn-primary btn-lg">Adicionar Receita</a>
+</div>
+
+{% if recipes %}
+    <div class="row">
+        {% for recipe in recipes %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ recipe.title }}</h5>
+                            <p class="card-text text-muted">{{ recipe.summary }}</p>
+                            {% if recipe.duration_minutes %}
+                                <p class="mb-1"><strong>Tempo de preparo:</strong> {{ recipe.duration_minutes }} min</p>
+                            {% endif %}
+                            <p class="mb-1"><strong>Ingredientes:</strong> {{ recipe.ingredients|length }}</p>
+                            <p class="mb-0"><strong>Passos:</strong> {{ recipe.steps|length }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-muted">Nenhuma receita salva ainda.</p>
+{% endif %}
 {% endblock %}

@@ -55,6 +55,7 @@ def add_recipe_view(request):
                     user=request.user,
                     title=recipe_data.title,
                     description=recipe_data.description,
+                    summary=recipe_data.summary,
                     ingredients=recipe_data.ingredients,
                     steps=recipe_data.steps,
                     duration_minutes=recipe_data.duration_minutes,
