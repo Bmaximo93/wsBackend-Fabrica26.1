@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.http import Http404
 from django.shortcuts import render, redirect
 
-from copytaste.forms import AddRecipeForm
+from copytaste.forms import AddRecipeForm, EditRecipeForm
 from copytaste.gemini import extract_recipe_from_video
 from copytaste.models import Recipe
 
@@ -90,4 +90,21 @@ def delete_recipe_view(request, pk):
 
     recipe.delete()
     return redirect('/recipes/')
+
+@login_required
+def edit_recipe_view(request, pk):
+    recipe = Recipe.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = EditRecipeForm(request.POST, instance=recipe)
+        if form.is_valid():
+            form.save()
+            return redirect('recipe_detail', pk=recipe.pk)
+    else:
+        form = EditRecipeForm(instance=recipe)
+        form.fields['ingredients'].initial = '\n'.join(recipe.ingredients or [])
+        form.fields['steps'].initial = '\n'.join(recipe.steps or [])
+
+    return render(request, 'edit_recipe.html', {'form': form, 'recipe': recipe})
+
 

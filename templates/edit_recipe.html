@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <a href="{% url 'recipe_detail' recipe.pk %}" class="text-decoration-none mb-3 d-inline-block">&larr; Voltar</a>
+
+        <h2 class="mb-4">Editar Receita</h2>
+
+        {% include "partials/alert.html" %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-flex gap-2 mt-3">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-outline-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

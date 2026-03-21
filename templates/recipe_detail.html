@@ -36,8 +36,7 @@
         {% endif %}
 
         <div class="d-flex gap-2 mt-4">
-            <!-- TODO: implementar editar receita -->
-            <a href="#" class="btn btn-outline-primary">Editar</a>
+            <a href="{% url 'edit_recipe' recipe.pk %}" class="btn btn-outline-primary">Editar</a>
             <form method="post" action="{% url 'delete_recipe' recipe.pk %}" onsubmit="return confirm('Tem certeza que deseja apagar esta receita?')">
                 {% csrf_token %}
                 <button class="btn btn-outline-danger" type="submit">Apagar</button>
