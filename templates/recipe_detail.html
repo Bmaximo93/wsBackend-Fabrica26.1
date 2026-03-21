@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <a href="{% url 'recipe_list' %}" class="text-decoration-none mb-3 d-inline-block">&larr; Voltar</a>
+
+        <h2 class="mb-2">{{ recipe.title }}</h2>
+        <p class="text-muted">{{ recipe.description }}</p>
+
+        {% if recipe.duration_minutes %}
+            <p><strong>Tempo de preparo:</strong> {{ recipe.duration_minutes }} min</p>
+        {% endif %}
+
+        <h5 class="mt-4">Ingredientes</h5>
+        <ul class="list-group list-group-flush mb-4">
+            {% for ingredient in recipe.ingredients %}
+                <li class="list-group-item">{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+
+        <h5 class="mt-4">Modo de Preparo</h5>
+        <ol class="list-group list-group-numbered list-group-flush mb-4">
+            {% for step in recipe.steps %}
+                <li class="list-group-item">{{ step }}</li>
+            {% endfor %}
+        </ol>
+
+        {% if recipe.source_url %}
+            <p>
+                <a href="{{ recipe.source_url }}" target="_blank" class="text-decoration-none">
+                    Ver vídeo original &rarr;
+                </a>
+            </p>
+        {% endif %}
+
+        <div class="d-flex gap-2 mt-4">
+            <!-- TODO: implementar editar receita -->
+            <a href="#" class="btn btn-outline-primary">Editar</a>
+            <!-- TODO: implementar apagar receita -->
+            <button class="btn btn-outline-danger" >Apagar</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.http import Http404
 from django.shortcuts import render, redirect
 
 from copytaste.forms import AddRecipeForm
@@ -72,3 +73,10 @@ def add_recipe_view(request):
 
     return render(request, 'add_recipe.html', {'form': form})
 
+@login_required
+def recipe_detail_view(request, pk):
+    try:
+        recipe = Recipe.objects.get(pk=pk)
+    except Recipe.DoesNotExist:
+        raise Http404
+    return render(request, 'recipe_detail.html', {'recipe': recipe})
