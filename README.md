@@ -2,7 +2,7 @@
 
 Aplicação web para extrair e salvar receitas de vídeos do YouTube utilizando a API do Google Gemini.
 
-<img width="1603" height="582" alt="image" src="https://github.com/user-attachments/assets/2d23a1c4-4888-4abf-8dc3-6441999e17a3" /> 
+<img width="1603" height="582" alt="image" src="https://github.com/user-attachments/assets/50fb3f4d-fc99-4ec5-9dbd-9c92e87e0cd9" />
 <img width="1417" height="1446" alt="image" src="https://github.com/user-attachments/assets/3706c765-cd95-4e1b-b7c3-255fdeb199ce" />
 
 ## Sobre
@@ -36,7 +36,7 @@ A extração de receitas utiliza a [API do Google Gemini](https://ai.google.dev/
 
 O vídeo do YouTube é enviado para o Gemini como um [`Part.from_uri`](https://ai.google.dev/gemini-api/docs/video-understanding) com `mime_type="video/youtube"`, permitindo que o modelo analise o conteúdo visual e de áudio do vídeo diretamente pela URL.
 
-Para garantir que a resposta da IA siga uma estrutura consistente, a aplicação utiliza o [structured output](https://ai.google.dev/gemini-api/docs/structured-output) do Gemini. Um schema [Pydantic](https://docs.pydantic.dev/latest/) (`RecipeSchema`) é passado como `response_schema` na configuração da chamada, forçando o Gemini a retornar JSON no formato exato esperado. A resposta é então validada com `model_validate_json()` do Pydantic antes de ser salva no banco de dados.
+Para garantir que a resposta de IA siga uma estrutura consistente, a aplicação utiliza do estruturamento do output do Gemini, facilitado pelo [Pydantic](https://docs.pydantic.dev/latest/). Um schema Pydantic(`RecipeSchema`) é passado como `response_schema` na configuração da chamada, forçando o Gemini a retornar JSON no formato exato esperado. A resposta é então validada com `model_validate_json()` do Pydantic antes de ser salva no banco de dados.
 
 O prompt instrui o modelo a:
 - Extrair receitas mesmo de vídeos sem narração, inferindo a partir do conteúdo visual
@@ -116,5 +116,16 @@ python manage.py runserver
 | `DB_PASSWORD` | Senha do PostgreSQL |
 | `DB_HOST` | Host do banco (usar `db` no Docker) |
 | `DB_PORT` | Porta do banco (padrão: 5432) |
+
+## Melhorias futuras
+
+- Suporte a upload de vídeos locais além de URLs do YouTube
+- Processamento assíncrono da extração
+- Utilização da API YouTube para Embedding de video
+- Coleta de metadados de video (via API YouTube) para estimar tempo de proc.
+- Busca e filtros na lista de receitas
+- Favoritos, categorias e tags para organização
+- Compartilhamento público de receitas entre usuários
+- Imagens nas receitas
 
 
