@@ -1,7 +1,13 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
 from copytaste.models import Recipe
 
+class RegisterForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.help_text = None
 
 class AddRecipeForm(forms.Form):
     youtube_url = forms.URLField(

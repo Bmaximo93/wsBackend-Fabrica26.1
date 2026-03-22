@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f5f5;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+.navbar {
+    background-color: #1a1a2e;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    color: #e95420 !important;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.navbar .username {
+    color: whitesmoke;
+}
+
+.card {
+    border: 1px solid #e8e8e8;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.card-title {
+    font-weight: 700;
+}
+
+.card-hero {
+    border-left: 4px solid #e95420;
+}
+
+.recipe-card {
+    border-left: 4px solid #e95420;
+}
+
+.add-card {
+    border: 2px dashed #ccc;
+    background: transparent;
+    box-shadow: none;
+    color: #999;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.add-card:hover {
+    border-color: #e95420;
+    color: #e95420;
+    transform: none;
+    box-shadow: none;
+}
+
+.add-card i {
+    font-size: 2rem;
+}
+
+.recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.recipe-meta .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+}
+
+.recipe-meta .badge i {
+    color: #888;
+}
+
+.badge-link {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.badge-link:hover {
+    background-color: #e8e8e8 !important;
+    text-decoration: underline;
+}
+
+.list-group-item {
+    background-color: transparent;
+}
+
+.btn-primary {
+    background-color: #e95420;
+    border-color: #e95420;
+}
+
+.btn-primary:hover {
+    background-color: #c7421a;
+    border-color: #c7421a;
+}
+
+.btn-outline-primary {
+    color: #e95420;
+    border-color: #e95420;
+}
+
+.btn-outline-primary:hover {
+    background-color: #e95420;
+    border-color: #e95420;
+    color: #fff;
+}
+
+.btn-back {
+    color: #555;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-back:hover {
+    color: #e95420;
+}
+
+.page-title {
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e8e8e8;
+}

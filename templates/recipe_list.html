@@ -1,25 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Minhas Receitas</h2>
-    <a href="{% url 'add_recipe' %}" class="btn btn-primary btn-lg">Adicionar Receita</a>
-</div>
+<h2 class="mb-4 page-title">Minhas Receitas</h2>
 
 {% if recipes %}
-    <div class="row">
+    <div class="row align-items-stretch">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <a href="{% url 'add_recipe' %}" class="text-decoration-none h-100 d-block">
+                <div class="card add-card h-100 d-flex align-items-center justify-content-center">
+                    <div class="card-body text-center py-5">
+                        <i class="bi bi-plus-lg"></i>
+                        <p class="mt-2 mb-0">Adicionar Receita</p>
+                    </div>
+                </div>
+            </a>
+        </div>
         {% for recipe in recipes %}
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100">
+                <div class="card recipe-card h-100">
                     <a href="{% url 'recipe_detail' recipe.pk %}" class="text-decoration-none text-dark">
                         <div class="card-body">
                             <h5 class="card-title">{{ recipe.title }}</h5>
                             <p class="card-text text-muted">{{ recipe.summary }}</p>
-                            {% if recipe.duration_minutes %}
-                                <p class="mb-1"><strong>Tempo de preparo:</strong> {{ recipe.duration_minutes }} min</p>
-                            {% endif %}
-                            <p class="mb-1"><strong>Ingredientes:</strong> {{ recipe.ingredients|length }}</p>
-                            <p class="mb-0"><strong>Passos:</strong> {{ recipe.steps|length }}</p>
+                            <div class="recipe-meta">
+                                {% if recipe.duration_minutes %}
+                                    <span class="badge bg-light text-dark">
+                                        <i class="bi bi-clock"></i> {{ recipe.duration_minutes }} min
+                                    </span>
+                                {% endif %}
+                                <span class="badge bg-light text-dark">
+                                    <i class="bi bi-egg"></i> {{ recipe.ingredients|length }} ingredientes
+                                </span>
+                                <span class="badge bg-light text-dark">
+                                    <i class="bi bi-list-ol"></i> {{ recipe.steps|length }} passos
+                                </span>
+                            </div>
                         </div>
                     </a>
                 </div>
@@ -27,6 +42,12 @@
         {% endfor %}
     </div>
 {% else %}
-    <p class="text-muted">Nenhuma receita salva ainda.</p>
+    <div class="text-center py-5">
+        <i class="bi bi-book" style="font-size: 3rem; color: #ccc;"></i>
+        <p class="text-muted mt-3">Nenhuma receita salva ainda.</p>
+        <a href="{% url 'add_recipe' %}" class="btn btn-primary">
+            <i class="bi bi-plus-lg me-1"></i> Adicionar primeira receita
+        </a>
+    </div>
 {% endif %}
 {% endblock %}

@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.http import Http404
 from django.shortcuts import render, redirect
 
-from copytaste.forms import AddRecipeForm, EditRecipeForm
+from copytaste.forms import AddRecipeForm, EditRecipeForm, RegisterForm
 from copytaste.gemini import extract_recipe_from_video
 from copytaste.models import Recipe
 
@@ -16,12 +16,12 @@ def recipe_list_view(request):
 
 def register_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/login/')
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
 def login_view(request):

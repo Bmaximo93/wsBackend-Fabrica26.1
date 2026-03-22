@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="row justify-content-center">
@@ -9,10 +11,10 @@
         
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }} <!-- TODO: melhorar isso aqui depois -->
+            {{ form|crispy}}
             <button type="submit" class="btn btn-primary">Criar Conta</button>
-            <a href="{% url 'login' %}" class="btn btn-link">Já tem conta? Entrar</a>
         </form>
+        <p class="text-muted mt-3">Já tem conta? <a href="{% url 'login' %}">Entrar</a></p>
     </div>
 </div>
 {% endblock %}
