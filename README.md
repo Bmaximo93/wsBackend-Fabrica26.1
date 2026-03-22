@@ -43,7 +43,7 @@ O prompt instrui o modelo a:
 - Retornar todos os campos de texto em português brasileiro, independente da lingua original do vídeo
 - Inferir o tempo de preparo quando não explicitado no vídeo
 - Manter ingredientes com suas quantidades juntos
-- Separar cada passo como uma ação atômica individual
+- Separar cada passo como uma ação individual
 - Não fabricar informações que não estejam presentes no vídeo
 
 ### Modelo de dados
