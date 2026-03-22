@@ -2,6 +2,9 @@
 
 Aplicação web para extrair e salvar receitas de vídeos do YouTube utilizando a API do Google Gemini.
 
+<img width="1603" height="582" alt="image" src="https://github.com/user-attachments/assets/2d23a1c4-4888-4abf-8dc3-6441999e17a3" /> 
+<img width="1417" height="1446" alt="image" src="https://github.com/user-attachments/assets/3706c765-cd95-4e1b-b7c3-255fdeb199ce" />
+
 ## Sobre
 
 Sabe quando você salva um vídeo de receita no YouTube ou no Shorts para fazer depois, mas voce nunca faz porque acaba esquecendo? E quando finalmente vai cozinhar, precisa ficar pausando e reassistindo o vídeo a cada passo?
