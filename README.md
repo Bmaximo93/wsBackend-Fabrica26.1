@@ -22,6 +22,13 @@ A receita fica salva na conta do usuário, funcionando como um livro de receitas
 - **Frontend:** Django Templates + Bootstrap 5 (CDN)
 
 ## Como funciona
+### Funcionalidades
+
+- **Criar:** O usuário cola uma URL do YouTube, o Gemini extrai a receita e salva automaticamente
+- **Listar:** Página principal exibe todas as receitas do usuário em cards com resumo, tempo e contagem de ingredientes/passos
+- **Visualizar:** Página de detalhe com ingredientes, modo de preparo e link para o vídeo original
+- **Editar:** Formulário permite alterar título, descrição, ingredientes e passos
+- **Excluir:** Confirmação via dialog antes de apagar
 
 ### Integração com Gemini
 
