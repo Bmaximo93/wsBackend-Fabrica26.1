@@ -14,14 +14,14 @@
                     <div class="recipe-meta">
                         {% if recipe.duration_minutes %}
                            <span class="badge bg-light text-dark">
-                                <i class="bi bi-clock"></i> 30 min
+                                <i class="bi bi-clock"></i> {{ recipe.duration_minutes }} min
                            </span>
                         {% endif %}
                         <span class="badge bg-light text-dark">
-                            <i class="bi bi-egg"></i> 6 ingredientes
+                            <i class="bi bi-egg"></i> {{ recipe.ingredients|length }} ingredientes
                         </span>
                         <span class="badge bg-light text-dark">
-                            <i class="bi bi-list-ol"></i> 9 passos
+                            <i class="bi bi-list-ol"></i> {{ recipe.steps|length }} passos
                         </span>
                         {% if recipe.source_url %}
                             <a href="{{ recipe.source_url }}" target="_blank" class="badge bg-light text-dark text-decoration-none badge-link">
