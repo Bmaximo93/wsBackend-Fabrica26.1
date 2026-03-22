@@ -1,4 +1,4 @@
-# CopyTaste
+# 🔥CopyTaste
 
 Aplicação web para extrair e salvar receitas de vídeos do YouTube utilizando a API do Google Gemini.
 
